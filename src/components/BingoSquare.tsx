@@ -8,15 +8,17 @@ interface BingoSquareProps {
 
 export function BingoSquare({ square, isWinning, onClick }: BingoSquareProps) {
   const baseClasses =
-    'relative flex items-center justify-center p-1 text-center border border-gray-300 rounded transition-all duration-150 select-none min-h-[60px] text-xs leading-tight';
+    'relative flex items-center justify-center rounded-[24px] border px-3 py-4 text-center text-[0.82rem] leading-tight transition-all duration-200 select-none min-h-[72px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]';
 
   const stateClasses = square.isMarked
     ? isWinning
-      ? 'bg-amber-200 border-amber-400 text-amber-900'
-      : 'bg-marked border-marked-border text-green-800'
-    : 'bg-white text-gray-700 active:bg-gray-100';
+      ? 'bg-gradient-to-br from-[#fde68a] via-[#f59e0b] to-[#f97316] border-[#fbbf24] text-slate-950 shadow-[0_0_30px_rgba(251,191,36,0.3)]'
+      : 'bg-gradient-to-br from-[#6366f1]/95 to-[#0ea5e9]/80 border-[#818cf8] text-white shadow-[0_0_24px_rgba(99,102,241,0.3)]'
+    : square.isFreeSpace
+      ? 'bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.18),transparent_45%)] border-[#38bdf8]/50 text-cyan-100'
+      : 'bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_30%),linear-gradient(180deg,#0f172a_0%,#111827_100%)] border-white/10 text-slate-100 hover:border-[#a78bfa] hover:shadow-[0_0_16px_rgba(168,85,247,0.22)] active:border-[#38bdf8]';
 
-  const freeSpaceClasses = square.isFreeSpace ? 'font-bold text-sm' : '';
+  const freeSpaceClasses = square.isFreeSpace ? 'font-semibold tracking-wide' : '';
 
   return (
     <button
@@ -28,7 +30,7 @@ export function BingoSquare({ square, isWinning, onClick }: BingoSquareProps) {
     >
       <span className="wrap-break-word hyphens-auto">{square.text}</span>
       {square.isMarked && !square.isFreeSpace && (
-        <span className="absolute top-0.5 right-0.5 text-green-600 text-xs">✓</span>
+        <span className="absolute top-1 right-1 text-xs font-bold text-white">✓</span>
       )}
     </button>
   );

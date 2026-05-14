@@ -4,23 +4,32 @@ interface StartScreenProps {
 
 export function StartScreen({ onStart }: StartScreenProps) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-full p-6 bg-gray-50">
-      <div className="text-center max-w-sm">
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Bingo Mixer</h1>
-        <p className="text-lg text-gray-600 mb-8">Find your people!</p>
-        
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 mb-8">
-          <h2 className="font-semibold text-gray-800 mb-3">How to play</h2>
-          <ul className="text-left text-gray-600 text-sm space-y-2">
-            <li>• Find people who match the questions</li>
-            <li>• Tap a square when you find a match</li>
-            <li>• Get 5 in a row to win!</li>
+    <div className="flex min-h-full flex-col items-center justify-center px-6 py-12">
+      <div className="w-full max-w-2xl">
+        <div className="mb-10 text-center">
+          <p className="mb-4 text-sm uppercase tracking-[0.35em] text-slate-400">
+            Space Galaxy Glow
+          </p>
+          <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight text-white drop-shadow-[0_25px_45px_rgba(124,58,237,0.35)]">
+            Bingo Mixer
+          </h1>
+          <p className="mt-4 mx-auto max-w-2xl text-base text-slate-300 sm:text-lg">
+            Discover connections across the room while the board glows with cosmic energy.
+          </p>
+        </div>
+
+        <div className="glow-panel rounded-[32px] border border-white/10 p-8 shadow-[0_30px_80px_rgba(15,23,54,0.45)] mb-10">
+          <h2 className="text-xl font-semibold text-white mb-4">How to play</h2>
+          <ul className="space-y-3 text-left text-sm text-slate-300">
+            <li>• Find people who match the glowing questions</li>
+            <li>• Tap a square when you complete a match</li>
+            <li>• Light up 5 squares in a row to win!</li>
           </ul>
         </div>
 
         <button
           onClick={onStart}
-          className="w-full bg-accent text-white font-semibold py-4 px-8 rounded-lg text-lg active:bg-accent-light transition-colors"
+          className="w-full rounded-[28px] bg-gradient-to-r from-accent via-accent-light to-[#38bdf8] px-8 py-4 text-lg font-semibold text-white shadow-[0_0_40px_rgba(124,58,237,0.35)] transition duration-200 hover:shadow-[0_0_60px_rgba(56,189,248,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70 active:scale-[0.99] animate-[pulse-slow_3s_ease-in-out_infinite]"
         >
           Start Game
         </button>

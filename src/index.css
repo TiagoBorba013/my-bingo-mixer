@@ -1,21 +1,100 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-accent: #2563eb;
-  --color-accent-light: #3b82f6;
-  --color-marked: #dcfce7;
-  --color-marked-border: #22c55e;
+  --color-base: #050913;
+  --color-surface: rgba(11, 17, 44, 0.88);
+  --color-surface-strong: rgba(15, 23, 54, 0.96);
+  --color-accent: #7c3aed;
+  --color-accent-light: #a78bfa;
+  --color-glow: #38bdf8;
+  --color-marked: #4f46e5;
+  --color-marked-border: #818cf8;
   --color-bingo: #fbbf24;
+  --color-text: #e2e8f0;
+  --color-muted: #94a3b8;
+}
+
+:root {
+  color-scheme: dark;
+  background-color: var(--color-base);
 }
 
 html,
 body,
 #root {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
+  color: var(--color-text);
+  background-image:
+    radial-gradient(circle at top, rgba(147,197,253,0.08), transparent 24%),
+    radial-gradient(circle at 20% 20%, rgba(168,85,247,0.16), transparent 14%),
+    radial-gradient(circle at 85% 10%, rgba(56,189,248,0.14), transparent 12%),
+    linear-gradient(180deg, #060b1b 0%, #070d22 38%, #090f29 100%);
   -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15), transparent 5%),
+    radial-gradient(circle at 35% 60%, rgba(255,255,255,0.12), transparent 4%);
+  background-size: 60px 60px, 220px 220px, 180px 180px;
+  pointer-events: none;
+  opacity: 0.45;
+  mix-blend-mode: screen;
+  z-index: -1;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  button {
+    font: inherit;
+  }
+
+  .glow-panel {
+    background: rgba(15, 23, 54, 0.72);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 24px 80px rgba(99,102,241,0.16);
+    backdrop-filter: blur(18px);
+  }
+
+  .glow-ring {
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08),
+                0 0 30px rgba(124,58,237,0.18);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.92;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
